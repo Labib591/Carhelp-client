@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router";
+import Logo from "../assets/logo.png"
 
 const Navbar = () => {
 
@@ -49,7 +50,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-11/12 mx-auto flex justify-between items-center px-4 rounded-4xl mt-2 bg-base-100 shadow-sm">
+    <div className="flex justify-center items-center">
+      <div className="mx-auto w-[90%] fixed top-5 z-50 rounded-full flex justify-between items-center text-base font-normal py-1 px-2 bg-white shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,7 +78,7 @@ const Navbar = () => {
             {notLoggedInLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="flex items-center text-xl"><img src={Logo} className="w-12" alt="" />Carhelp</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -84,8 +86,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <a className="rounded-full bg-primary text-sm text-slate-50 px-6 py-3 pointer">Login</a>
       </div>
+    </div>
     </div>
   );
 };

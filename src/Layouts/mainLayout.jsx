@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, useNavigate, useNavigation } from "react-router";
-// import Footer from "../Components/Footer";
-import Navbar from "../Components/Navba";
+import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
 
 const mainLayout = () => {
 
@@ -14,7 +14,7 @@ const mainLayout = () => {
         <div>
             <Navbar></Navbar>
             <Outlet></Outlet>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </div>
     );
 };
