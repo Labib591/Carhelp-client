@@ -11,14 +11,14 @@ const Hero = () => {
         className="w-full h-screen bg-cover"
         style={{ filter: "brightness(50%)" }}
       />
-      <div className="absolute bottom-1/5 left-1/12 text-white">
-        <div className="flex flex-col gap-5 justify-baseline items-baseline">
-          <h1 className="text-8xl font-display font-light tracking-tight ">
+      <div className="absolute bottom-1/5 left-1/18 text-white">
+        <div className="flex flex-col gap-8 justify-baseline items-baseline">
+          <h1 className="text-8xl font-display font-normal tracking-tight ">
             Rent your dream car
           </h1>
-          <button className="bg-[#ffffff80] flex items-center gap-1 justify-center cursor-pointer text-white text-center border-0 tracking-wider rounded-full px-6 py-3">
+          <button className="bg-[var(--primary-50)] flex items-center gap-2 justify-center cursor-pointer text-[var(--primary-950)] text-center border-0 tracking-wider rounded-full px-4 py-2 pr-2">
             Find a car
-            <span>
+            <span className="text-2xl rounded-full border-2 border-[var(--primary-700)] bg-[var(--primary-color)] p-1">
               <MdArrowOutward />
             </span>
           </button>
