@@ -4,7 +4,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 const Hero = () => {
   return (
-    <div className="relative">
+    <div className="relative font-display">
       <img
         src={HeroImage}
         alt="HeroImage"

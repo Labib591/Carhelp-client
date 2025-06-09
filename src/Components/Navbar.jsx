@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Logo from "../assets/logo.png"
 
 const Navbar = () => {
@@ -7,12 +7,12 @@ const Navbar = () => {
     const notLoggedInLinks = (
     <>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/"}>
+        <NavLink className="hover:text-blue-300" to={"/"}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/addtask"}>
+        <NavLink className="hover:text-blue-300" to={"/addtask"}>
           Available Cars
         </NavLink>
       </li>
@@ -50,7 +50,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center font-display">
       <div className="mx-auto w-[90%] fixed top-5 z-50 rounded-full flex justify-between items-center text-base font-normal py-1 px-2 bg-white shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
@@ -86,7 +86,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="rounded-full bg-primary text-sm text-slate-50 px-6 py-3 pointer">Login</a>
+        <Link to={"/login"} className="rounded-full bg-primary text-sm text-slate-50 px-6 py-3 pointer">Login</Link>
       </div>
     </div>
     </div>

@@ -3,5 +3,9 @@
 
 @theme {
   --font-display: "Plus Jakarta Sans", "sans-serif"; 
-  --primary: #14A800;
+  --primary: #000aff;
+}
+
+.active{
+  color: #000aff;
 }
