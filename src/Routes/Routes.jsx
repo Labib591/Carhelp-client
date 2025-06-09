@@ -7,6 +7,7 @@ import mainLayout from "../Layouts/mainLayout";
 import HomePage from "../Pages/HomePage";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
+import AvailableCars from "../Pages/AvailableCars";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
      {
       path: '/register',
       Component: RegisterPage
+     },
+     {
+      path: '/availablecars',
+      Component: AvailableCars
      }
    ]
   }

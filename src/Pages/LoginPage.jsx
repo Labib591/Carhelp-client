@@ -52,7 +52,7 @@ const LoginPage = () => {
       <div className="hero my-20">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold text-primary">Login now!</h1>
+            <h1 className="text-5xl font-bold text-[var(--primary-color)]">Login now!</h1>
           </div>
           <div className="card bg-base-100 w-96 shrink-0 shadow-2xl">
             <div className="card-body">
@@ -66,24 +66,24 @@ const LoginPage = () => {
                   className="input"
                   placeholder="Password"
                 />
-                <div>
+                <div className="mt-2">
                   <a className="link link-hover">Forgot password?</a>
                 </div>
                 <button
                   type="submit"
-                  className="btn w-full bg-primary text-white hover:bg-blue-600 mt-4"
+                  className="btn w-full bg-[var(--primary-color)] text-white hover:bg-[var(--primary-600)] mt-4"
                 >
                   Login
                 </button>
               </form>
-              <p>
+              <p className="mt-4">
                 Don't have an account?
-                <Link to="/register" className="link link-hover text-primary">
+                <Link to="/register" className="link link-hover text-[var(--primary-400)]">
                   Register
                 </Link>
               </p>
               <div className="divider">OR</div>
-              <button onClick={loginwithGoogle} className="btn bg-primary text-white hover:bg-blue-600">
+              <button onClick={loginwithGoogle} className="btn bg-[var(--primary-color)] text-white hover:bg-[var(--primary-600)]">
                 <FaGoogle></FaGoogle>Sign in with Google
               </button>
             </div>

@@ -1,18 +1,22 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../assets/logo.png"
+import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
+
+  const {user,logOutUser} = use(AuthContext);
+  console.log(user);
 
     const notLoggedInLinks = (
     <>
       <li>
-        <NavLink className="hover:text-blue-300" to={"/"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/"}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-blue-300" to={"/addtask"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/availablecars"}>
           Available Cars
         </NavLink>
       </li>
@@ -22,27 +26,27 @@ const Navbar = () => {
   const loggedInLinks = (
     <>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/"}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/addtask"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/availablecars"}>
           Available Cars
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/addtask"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/addcars"}>
           Add Cars
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/addtask"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/mycars"}>
           My Cars
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[#14A800]" to={"/addtask"}>
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/mybookings"}>
           My Bookings
         </NavLink>
       </li>
@@ -75,18 +79,20 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            {notLoggedInLinks}
+            {user? loggedInLinks : notLoggedInLinks}
           </ul>
         </div>
         <a className="flex items-center text-xl"><img src={Logo} className="w-12" alt="" />Carhelp</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {notLoggedInLinks}
+          {user? loggedInLinks : notLoggedInLinks}
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"} className="rounded-full bg-primary text-sm text-slate-50 px-6 py-3 pointer">Login</Link>
+        {
+          user? <button onClick={logOutUser} className="btn bg-[#f7f7f7] rounded-full">Logout</button> : <Link to="/login"><button className="btn bg-[#f7f7f7] rounded-full">Login</button></Link> 
+        }
       </div>
     </div>
     </div>

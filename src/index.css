@@ -3,9 +3,19 @@
 
 @theme {
   --font-display: "Plus Jakarta Sans", "sans-serif"; 
-  --primary: #000aff;
+  --primary-color: #00BFFF;
+  --primary-50: #E6F9FF;
+  --primary-100: #CCF2FF;
+  --primary-200: #99E5FF;
+  --primary-300: #66D9FF;
+  --primary-400: #33CCFF;
+  --primary-600: #0099CC;
+  --primary-700: #007399;
+  --primary-800: #004C66;
+  --primary-900: #002633;
+  --primary-950: #00131A;
 }
 
 .active{
-  color: #000aff;
+  color: #00BFFF;
 }
