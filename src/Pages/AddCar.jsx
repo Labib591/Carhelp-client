@@ -11,7 +11,7 @@ const AddCar = () => {
     const availability = formData.get('availability') === 'true';
     const carData = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:5000/cars", {
+    fetch("https://carhelp-server.vercel.app/cars", {
       method: "POST",
       headers: {
         "content-type": "application/json",
