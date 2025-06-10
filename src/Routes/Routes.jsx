@@ -19,6 +19,7 @@ const router = createBrowserRouter([
    children: [
      {
       index: true,
+      loader: () => fetch('http://localhost:5000/cars'),
       Component: HomePage,
      },
      {

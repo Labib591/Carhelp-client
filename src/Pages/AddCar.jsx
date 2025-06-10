@@ -8,6 +8,7 @@ const AddCar = () => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
+    const availability = formData.get('availability') === 'true';
     const carData = Object.fromEntries(formData.entries());
 
     fetch("http://localhost:5000/cars", {
@@ -55,14 +56,16 @@ const AddCar = () => {
           </div>
           <div>
             <label className="block font-semibold mb-1">Availability</label>
-            <input
-              type="text"
+            <select
               name="availability"
-              placeholder="Available / Unavailable"
               required
               className="w-full border rounded-xl px-4 py-2 text-sm sm:text-base"
-            />
+            >
+              <option value="true">Available</option>
+              <option value="false">Unavailable</option>
+            </select>
           </div>
+
           <div>
             <label className="block font-semibold mb-1">
               Vehicle Registration Number
