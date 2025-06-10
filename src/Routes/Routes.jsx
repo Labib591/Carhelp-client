@@ -42,8 +42,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/cardetails/:id',
-        loader: ({ params }) => fetch(`https://carhelp-server.vercel.app/cars/${params.id}`),
-        Component: CarDetails
+        loader: ({ params }) => fetch(`https://carhelp-server.vercel.app/cardetails/${params.id}`),
+        element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>
       }
     ]
   }
