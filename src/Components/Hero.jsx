@@ -18,7 +18,7 @@ const Hero = () => {
             Rent your dream car
           </h1>
           <Link to={"/availablecars"}>
-            <button className="bg-[var(--primary-50)] flex items-center gap-2 justify-center cursor-pointer text-[var(--primary-950)] text-center border-0 tracking-wider rounded-full px-4 py-2 pr-2">
+            <button style={{ filter: "opacity(80%)" }} className="bg-[var(--primary-50)] backdrop-blur-xl flex items-center gap-2 justify-center cursor-pointer text-[var(--primary-950)] text-center tracking-wider rounded-full px-4 py-2 pr-2">
               Find a car
               <span className="text-2xl rounded-full border-2 border-[var(--primary-700)] bg-[var(--primary-color)] p-1">
                 <MdArrowOutward />

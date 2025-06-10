@@ -15,33 +15,34 @@ import PrivateRoute from "../Context/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-   Component: mainLayout,
-   children: [
-     {
-      index: true,
-      loader: () => fetch('http://localhost:5000/cars'),
-      Component: HomePage,
-     },
-     {
-      path: '/login',
-      Component: LoginPage
-     },
-     {
-      path: '/register',
-      Component: RegisterPage
-     },
-     {
-      path: '/availablecars',
-      loader: () => fetch('http://localhost:5000/cars'),
-      Component: AvailableCars
-     },
-     {
-      path: '/addcars',
-      element: <PrivateRoute><AddCar></AddCar></PrivateRoute>
-     }
-   ]
+    Component: mainLayout,
+    children: [
+      {
+        index: true,
+        loader: () => fetch('https://carhelp-server.vercel.app/cars'),
+        Component: HomePage,
+      },
+      {
+        path: '/login',
+        Component: LoginPage
+      },
+      {
+        path: '/register',
+        Component: RegisterPage
+      },
+      {
+        path: '/availablecars',
+        loader: () => fetch('https://carhelp-server.vercel.app/cars'),
+        Component: AvailableCars
+      },
+      {
+        path: '/addcars',
+        element: <PrivateRoute><AddCar></AddCar></PrivateRoute>
+      }
+    ]
   }
 ]);
+
 
 
 export default router;

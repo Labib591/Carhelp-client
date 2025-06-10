@@ -6,7 +6,7 @@ import { AuthContext } from "../Context/AuthContext";
 const Navbar = () => {
 
   const {user,logOutUser} = use(AuthContext);
-  console.log(user);
+  // console.log(user);
 
     const notLoggedInLinks = (
     <>

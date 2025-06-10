@@ -5,7 +5,7 @@ import Car from "../Components/Car";
 const AvailableCars = () => {
 
     const data = useLoaderData();
-    console.log(data);
+    console.log("data: ",data, Array.isArray(data));
 
     return (<div className="my-30">
         <h1 className="text-6xl font-semibold text-center font-display">Available Cars</h1>
