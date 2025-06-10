@@ -8,6 +8,8 @@ import HomePage from "../Pages/HomePage";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import AvailableCars from "../Pages/AvailableCars";
+import AddCar from "../Pages/AddCar";
+import PrivateRoute from "../Context/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -29,7 +31,12 @@ const router = createBrowserRouter([
      },
      {
       path: '/availablecars',
+      loader: () => fetch('http://localhost:5000/cars'),
       Component: AvailableCars
+     },
+     {
+      path: '/addcars',
+      element: <PrivateRoute><AddCar></AddCar></PrivateRoute>
      }
    ]
   }
