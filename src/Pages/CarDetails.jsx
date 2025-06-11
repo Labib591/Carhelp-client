@@ -1,36 +1,79 @@
-import React, { Suspense } from "react";
-import { useLoaderData } from "react-router";
+    import React, { Suspense, useState } from "react";
+    import { useLoaderData } from "react-router";
+    import BookingModal from "../Components/BookingModal";
 
-const CarDetails = () => {
+    const CarDetails = () => {
+        const {
+            model,
+            image,
+            description,
+            price,
+            availability,
+            features
+        } = useLoaderData();
 
-    const {model,image,description,price,availability} = useLoaderData();
-    console.log(model);
 
-    return (
-    <Suspense fallback={<div>Loading...</div>}>
-        <div className="my-25 text-center w-[70%] h-[400px] mx-auto flex gap-4 bg-[var(--primary-50)] rounded-2xl p-2">
-        <img src={image} alt="" className="w-[40%] rounded-2xl"/>
-        <div className="flex flex-col justify-between items-baseline gap-2">
-            <div className="flex flex-col items-baseline">
-                <h1 className="text-6xl font-semibold">{model}</h1>
-            <p className="">{description}</p>
-            <h1 className="text-2xl font-semibold">${price}/day</h1>
+        const [isModalOpen, setIsModalOpen] = useState(false);
+
+        const handleBooking = () => {
+            setIsModalOpen(true);
+        };
+
+        const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+        return (
+            <Suspense fallback={<div className="text-center my-20 text-xl">Loading car details...</div>}>
+                <div className="max-w-5xl mx-auto my-24 p-6 bg-[var(--primary-50)] rounded-2xl shadow-xl flex flex-col md:flex-row gap-8">
+                <div className="w-full md:w-1/2">
+                    <div className="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden bg-gray-200">
+                        <img
+                            src={image}
+                            alt={model}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+
+                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                    <div className="flex flex-col gap-4">
+                        <h1 className="text-4xl font-bold text-[var(--primary-900)]">{model}</h1>
+                        <p className="text-[var(--primary-800)]">{description}</p>
+                        <h2 className="text-2xl font-semibold text-[var(--primary-700)]">${price} / day</h2>
+
+                        <div>
+                            {availability ? (
+                                <span className="inline-block px-3 py-1 text-sm font-medium text-[var(--primary-950)] bg-[var(--primary-300)] rounded-full">
+                                    Available
+                                </span>
+                            ) : (
+                                <span className="inline-block px-3 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">
+                                    Unavailable
+                                </span>
+                            )}
+                        </div>
+                        <p>Features: {features}</p>
+                    </div>
+
+                    {availability && (
+                        <div className="mt-6">
+                            <button
+                                onClick={handleBooking}
+                                className="bg-[var(--primary-color)] text-[var(--primary-950)] font-medium py-2 px-6 rounded-full cursor-pointer hover:scale-105 transform transition duration-300 shadow-md"
+                            >
+                                Book Now
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
-            <div>
-                {
-                    availability ? (
-                        <button className="bg-[var(--primary-color)] text-[var(--primary-950)] py-2 px-4 rounded-full cursor-pointer hover:scale-105 hover:transform duration-300">Book Now</button>
-                    ) : (
-                        <span className="inline-block px-2 py-1 text-red-700 bg-red-100 rounded-full">
-                            Unavailable
-                        </span>
-                    )
-                }
-            </div>
-        </div>
-    </div>
-    </Suspense>
-);
-};  
 
-export default CarDetails;
+            {isModalOpen && (
+                <BookingModal onClose={closeModal} car={useLoaderData()} />
+            )}
+            </Suspense>
+        );
+    };
+
+    export default CarDetails;

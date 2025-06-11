@@ -11,6 +11,8 @@ const AddCar = () => {
     const availability = formData.get('availability') === 'true';
     const carData = Object.fromEntries(formData.entries());
 
+    carData.bookingCount = parseInt(carData.bookingCount, 10);
+
     fetch("https://carhelp-server.vercel.app/cars", {
       method: "POST",
       headers: {
