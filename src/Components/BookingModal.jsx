@@ -26,7 +26,7 @@ const BookingModal = ({ onClose, car }) => {
 
     // console.log(totalDays, totalCost);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://carhelp-server.vercel.app/bookings", {
         method: "POST",
         headers: {
             "content-type": "application/json",
