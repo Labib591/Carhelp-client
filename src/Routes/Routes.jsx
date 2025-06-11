@@ -11,6 +11,7 @@ import AvailableCars from "../Pages/AvailableCars";
 import AddCar from "../Pages/AddCar";
 import PrivateRoute from "../Context/PrivateRoute";
 import CarDetails from "../Pages/CarDetails";
+import MyBookings from "../Pages/MyBookings";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         path: '/cardetails/:id',
         loader: ({ params }) => fetch(`https://carhelp-server.vercel.app/cardetails/${params.id}`),
         element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>
+      },
+      {
+        path: '/mybookings',
+        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
       }
     ]
   }

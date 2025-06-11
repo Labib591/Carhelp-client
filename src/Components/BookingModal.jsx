@@ -22,7 +22,7 @@ const BookingModal = ({ onClose, car }) => {
     const totalCost = totalDays * car.price
 
     const bookingDate = new Date();
-    const bookingDateStr = bookingDate.toDateString();
+    const bookingDateStr = bookingDate.toISOString();
 
     // console.log(totalDays, totalCost);
 
@@ -32,13 +32,14 @@ const BookingModal = ({ onClose, car }) => {
             "content-type": "application/json",
         },
         body: JSON.stringify({
+            model: car.model,
+            image: car.image,
             carId: car._id,
             startDate: startDateStr,
             endDate: endDateStr,
             totalDays: totalDays,
             totalCost: totalCost,
             bookingDate: bookingDateStr,
-            userId: user._id,
             userEmail: user.email
         }),
     })
