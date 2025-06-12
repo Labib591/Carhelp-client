@@ -5,19 +5,25 @@ import { useNavigate } from "react-router";
 import Swal from 'sweetalert2'
 // import { useNavigate } from "react-router-dom";
 
-const MyCarsTable = ({ myCars, cars}) => {
+const MyCarsTable = ({ myCars, setCars}) => {
   //   const navigate = useNavigate();
 
-  const formatDate = (isoDate) => {
-    const date = new Date(isoDate);
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}:${month}:${year}`;
-  };
+const formatDate = (rawDate) => {
+    console.log(rawDate);
+  if (!rawDate) return "N/A";
+
+  const date = new Date(rawDate);
+  if (isNaN(date.getTime())) return "Invalid Date";
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+
+  return `${day}:${month}:${year}`;
+};
 
 
-  const handleDelete = (id, carId) => {
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -28,15 +34,15 @@ const MyCarsTable = ({ myCars, cars}) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://carhelp-server.vercel.app/bookings/${id}`, {
+        fetch(`https://carhelp-server.vercel.app/cars/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
             if (data.deletedCount) {
-              setData((prevData) =>
-              prevData.filter((car) => car.carId !== carId)
+              setCars((prevData) =>
+              prevData.filter((car) => car._id !== id)
             );
               Swal.fire({
                 title: "Deleted!",
@@ -102,7 +108,7 @@ const MyCarsTable = ({ myCars, cars}) => {
                   Update
                 </button>
                 <button
-                  onClick={() => handleDelete(car._id, car.carId)}
+                  onClick={() => handleDelete(car._id)}
                   className="btn px-3 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-lg flex items-center gap-1"
                 >
                   <IoTrashBin className="text-lg" />

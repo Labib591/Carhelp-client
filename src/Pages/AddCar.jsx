@@ -14,8 +14,7 @@ const AddCar = () => {
     const carData = Object.fromEntries(formData.entries());
 
     carData.bookingCount = parseInt(carData.bookingCount, 10);
-    const addDate = new Date();
-    carData.addDate = addDate.toISOString();
+    carData.addDate = new Date();
 
     fetch("https://carhelp-server.vercel.app/cars", {
       method: "POST",

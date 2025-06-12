@@ -82,7 +82,7 @@ const Navbar = () => {
             {user? loggedInLinks : notLoggedInLinks}
           </ul>
         </div>
-        <a className="flex items-center text-xl"><img src={Logo} className="w-12" alt="" />Carhelp</a>
+        <a href="/" className="flex items-center text-xl"><img src={Logo} className="w-12" alt="" />Carhelp</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
