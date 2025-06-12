@@ -1,5 +1,6 @@
 import React, { use } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const AddCar = () => {
   const { user } = use(AuthContext);
@@ -8,7 +9,8 @@ const AddCar = () => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
-    const availability = formData.get('availability') === 'true';
+    const availability =
+      formData.get("availability") === "Available" ? true : false;
     const carData = Object.fromEntries(formData.entries());
 
     carData.bookingCount = parseInt(carData.bookingCount, 10);
@@ -18,12 +20,28 @@ const AddCar = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(carData),
+      body: JSON.stringify({
+        model: carData.model,
+        image: carData.image,
+        price: carData.price,
+        description: carData.description,
+        availability: availability,
+        location: carData.location,
+        registrationNumber: carData.registrationNumber,
+        bookingCount: carData.bookingCount,
+        userEmail: user.email,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Car added successfully");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your car has been added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           form.reset();
         }
       });
@@ -63,8 +81,8 @@ const AddCar = () => {
               required
               className="w-full border rounded-xl px-4 py-2 text-sm sm:text-base"
             >
-              <option value="true">Available</option>
-              <option value="false">Unavailable</option>
+              <option value="Available">Available</option>
+              <option value="Unavailable">Unavailable</option>
             </select>
           </div>
 
