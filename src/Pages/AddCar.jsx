@@ -14,6 +14,8 @@ const AddCar = () => {
     const carData = Object.fromEntries(formData.entries());
 
     carData.bookingCount = parseInt(carData.bookingCount, 10);
+    const addDate = new Date();
+    carData.addDate = addDate.toISOString();
 
     fetch("https://carhelp-server.vercel.app/cars", {
       method: "POST",
@@ -30,6 +32,7 @@ const AddCar = () => {
         registrationNumber: carData.registrationNumber,
         bookingCount: carData.bookingCount,
         userEmail: user.email,
+        addDate: carData.addDate,
       }),
     })
       .then((res) => res.json())

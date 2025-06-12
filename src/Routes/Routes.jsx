@@ -12,6 +12,7 @@ import AddCar from "../Pages/AddCar";
 import PrivateRoute from "../Context/PrivateRoute";
 import CarDetails from "../Pages/CarDetails";
 import MyBookings from "../Pages/MyBookings";
+import MyCars from "../Pages/MyCars";
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
       {
         path: '/mybookings',
         element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
+      },
+      {
+        path:"/mycars",
+        loader: () => fetch('https://carhelp-server.vercel.app/cars'),
+        element: <PrivateRoute><MyCars></MyCars></PrivateRoute>
       }
     ]
   }
