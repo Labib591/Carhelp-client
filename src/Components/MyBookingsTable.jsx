@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoCalendarOutline, IoTrashBin } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import Swal from 'sweetalert2'
+import ModifyModal from "./ModifyModal";
 // import { useNavigate } from "react-router-dom";
 
-const MyBookingsTable = ({ myCars, cars, setData }) => {
-  //   const navigate = useNavigate();
+const MyBookingsTable = ({ myCars, cars, setData, onModifyClicked }) => {
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -59,15 +59,6 @@ const MyBookingsTable = ({ myCars, cars, setData }) => {
     });
   };
 
-  const handleModify = () => {
-    Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your task has been added successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-  }
 
   return (
     <div className="overflow-x-auto my-10 rounded-xl border border-[var(--primary-100)] font-display shadow-md">
@@ -107,7 +98,7 @@ const MyBookingsTable = ({ myCars, cars, setData }) => {
               <td>{formatDateTime(car.bookingDate)}</td>
               <td className="flex gap-2 items-center">
                 <button
-                onClick={handleModify}
+                onClick={() => onModifyClicked(car)}
                   className="btn px-3 py-2 bg-[var(--primary-color)] hover:bg-[var(--primary-600)] text-white text-sm font-medium rounded-lg flex items-center gap-1"
                 >
                   <IoCalendarOutline className="text-lg" />
