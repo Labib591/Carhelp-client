@@ -15,6 +15,7 @@ const AddCar = () => {
 
     carData.bookingCount = parseInt(carData.bookingCount, 10);
     carData.addDate = new Date();
+    const features = carData.features.split(",").map((feature) => feature.trim());
 
     fetch("https://carhelp-server.vercel.app/cars", {
       method: "POST",
@@ -22,6 +23,7 @@ const AddCar = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
+        brand: carData.brand,
         model: carData.model,
         image: carData.image,
         price: carData.price,
@@ -29,6 +31,7 @@ const AddCar = () => {
         availability: availability,
         location: carData.location,
         registrationNumber: carData.registrationNumber,
+        features: features,
         bookingCount: carData.bookingCount,
         userEmail: user.email,
         addDate: carData.addDate,
@@ -56,6 +59,15 @@ const AddCar = () => {
           Add New Car
         </h1>
         <form onSubmit={handleAddCar} className="space-y-4">
+          <div>
+            <label className="block font-semibold mb-1">Car Brand</label>
+            <input
+              type="text"
+              name="brand"
+              required
+              className="w-full border rounded-xl px-4 py-2 text-sm sm:text-base"
+            />
+          </div>
           <div>
             <label className="block font-semibold mb-1">Car Model</label>
             <input

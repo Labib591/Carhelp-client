@@ -5,6 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const Car = ({ car }) => {
   const {
+    brand,
     model,
     image,
     price,
@@ -54,6 +55,9 @@ const Car = ({ car }) => {
         {/* Content Section */}
         <div className="flex flex-col p-6 space-y-4">
           {/* Header */}
+          <div>
+            <p className="text-sm text-gray-500">{brand}</p>
+          </div>
           <div className="flex justify-between items-start">
             <div>
               <h2 className="text-2xl font-bold text-[var(--primary-950)] mb-1 group-hover:text-[var(--primary-color)] transition-colors duration-300">

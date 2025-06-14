@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const ModifyModal = ({ car, onClose, onUpdate }) => {
     const { user } = use(AuthContext);
 
-    console.log(car);
+    // console.log(car);
 
     const pricePerDay = car.totalCost / car.totalDays;
 
@@ -36,7 +36,7 @@ const ModifyModal = ({ car, onClose, onUpdate }) => {
     }
 
 
-    fetch(`http://localhost:5000/bookings/${car._id}`, {
+    fetch(`https://carhelp-server.vercel.app/bookings/${car._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -79,7 +79,7 @@ const ModifyModal = ({ car, onClose, onUpdate }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 font-display">
+    <div className="fixed inset-0 bg-[#00000020] bg-opacity-50 flex items-center justify-center z-50 font-display">
       <div className="bg-white p-6 rounded-xl w-[90%] max-w-md shadow-lg space-y-2">
         <h2 className="text-2xl font-semibold text-[var(--primary-950)]">
           Book {car.model}

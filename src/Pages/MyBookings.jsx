@@ -22,8 +22,13 @@ const MyBookings = () => {
         .then((data) => {
             // console.log(data, Array.isArray(data));
             setData(data);
+            setLoading(false);
         })
     },[]);
+
+    if(loading){
+        return <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>;
+    }
 
 
     const myCars = data.filter((car) => car.userEmail === user.email);
