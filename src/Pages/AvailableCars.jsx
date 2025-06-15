@@ -10,13 +10,50 @@ const AvailableCars = () => {
 
   const [isGrid, setIsGrid] = useState(true);
   const [isList, setIsList] = useState(false);
-
+  const [sortOption,setSortOption] = useState("");
+  const[loading,setLoading] = useState(false);
   const [allCars, setAllCars] = useState(data);
   const [filteredCars, setFilteredCars] = useState(data);
 
   const handleToggle = () => {
     setIsGrid(!isGrid);
     setIsList(!isList);
+  };
+
+
+  // if(loading){
+  //   return <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>;
+  // }
+
+  const handleSorting = (e) => {
+    const option = e.target.value;
+    setSortOption(option);
+
+    let sorted = [...filteredCars];
+
+    switch(option){
+      case "date-newest":
+        sorted.sort((a,b) => new Date(b.addDate) - new Date(a.addDate));
+        break;
+      
+      case "date-oldest":
+        sorted.sort((a,b) => new Date(a.addDate) - new Date(b.addDate));
+        break;
+
+      case "price-lowest":
+        sorted.sort((a,b) => a.price - b.price);
+        break;
+
+      case "price-highest":
+        sorted.sort((a,b) => b.price - a.price);
+        break;
+      
+      default:
+        sorted = [...allCars];
+    }
+
+    setFilteredCars(sorted);
+
   };
 
 
@@ -32,6 +69,12 @@ const AvailableCars = () => {
   e.target.reset();
 };
 
+
+if (loading) {
+    return (
+      <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>
+    );
+  }
 
   return (
     <div className="my-25 w-[90%] mx-auto font-display">
@@ -56,6 +99,23 @@ const AvailableCars = () => {
             Search
           </button>
         </form>
+
+        {/* Filter Buttons */} 
+
+        <div className="mt-4 md:mt-0">
+  <select
+    onChange={handleSorting}
+    value={sortOption}
+    className="px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+  >
+    <option value="">Sort By</option>
+    <option value="date-newest">Date Added: Newest First</option>
+    <option value="date-oldest">Date Added: Oldest First</option>
+    <option value="price-lowest">Price: Lowest First</option>
+    <option value="price-highest">Price: Highest First</option>
+  </select>
+</div>
+
 
         {/* Toggle Buttons */}
         <div className="flex gap-3 mt-4 md:mt-0">

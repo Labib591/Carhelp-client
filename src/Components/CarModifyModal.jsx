@@ -1,8 +1,11 @@
 import React from "react";
+import { use } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthContext";
 
 const CarModifyModal = ({ car, onModalOff, onUpdateCar }) => {
-  console.log(car);
+  // console.log(car);
+  const { user } = use(AuthContext);
 
 const handleCarUpdate = (event) => {
   event.preventDefault();
@@ -14,6 +17,7 @@ const handleCarUpdate = (event) => {
 
 
     const features = carData.features.split(",").map((feature) => feature.trim());
+    const price = parseInt(carData.price, 10); 
   
 
   // Fix data types
@@ -21,7 +25,7 @@ const handleCarUpdate = (event) => {
     ...car,
     model: carData.model,
     image: carData.image,
-    price: carData.price,
+    price: price,
     description: carData.description,
     availability: availability,
     features: features,
@@ -30,15 +34,16 @@ const handleCarUpdate = (event) => {
     features: carData.features
   };
 
-  fetch(`http://localhost:5000/cars/${car._id}`, {
+  fetch(`https://carhelp-server.vercel.app/cars/${car._id}?email=${user.email}`, {
     method: "PUT",
     headers: {
+      authorization: `Bearer ${user.accessToken}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
         model: carData.model,
         image: carData.image,
-        price: carData.price,
+        price: price,
         description: carData.description,
         availability: availability,
         features: features,
@@ -52,7 +57,7 @@ const handleCarUpdate = (event) => {
         throw new Error(data.error || "Failed to update car");
       }
 
-      if (data.modifiedCount > 0) {
+      if (data.modifiedCar>0) {
         Swal.fire({
           position: "center",
           icon: "success",

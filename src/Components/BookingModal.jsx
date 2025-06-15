@@ -24,9 +24,10 @@ const BookingModal = ({ onClose, car }) => {
 
     // console.log(totalDays, totalCost);
 
-    fetch("https://carhelp-server.vercel.app/bookings", {
+    fetch(`https://carhelp-server.vercel.app/bookings?email=${user.email}`, {
       method: "POST",
       headers: {
+        authorization: `Bearer ${user.accessToken}`,
         "content-type": "application/json",
       },
       body: JSON.stringify({

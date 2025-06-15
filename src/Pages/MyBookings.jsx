@@ -17,7 +17,11 @@ const MyBookings = () => {
 
 
     useEffect(() => {
-        fetch("https://carhelp-server.vercel.app/bookings")
+        fetch(`https://carhelp-server.vercel.app/bookings?email=${user.email}`,{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
         .then((res) => res.json())
         .then((data) => {
             // console.log(data, Array.isArray(data));
@@ -29,9 +33,6 @@ const MyBookings = () => {
     if(loading){
         return <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>;
     }
-
-
-    const myCars = data.filter((car) => car.userEmail === user.email);
     
 
     const handleModify = (car) => {
@@ -56,7 +57,7 @@ const MyBookings = () => {
     return (<div className="my-25 px-4">
         <h1 className="font-display text-6xl font-semibold text-center">My Bookings</h1>
         {
-            myCars?.length > 0?<MyBookingsTable myCars={myCars} cars={data} setData={setData} onModifyClicked={handleModify}></MyBookingsTable>:
+            data?.length > 0?<MyBookingsTable myCars={data} cars={data} setData={setData} onModifyClicked={handleModify}></MyBookingsTable>:
             <>
             <div className="flex flex-col items-center">
                 <p className="text-center text-2xl font-semibold text-red-300 mt-20">No Bookings Found</p>

@@ -36,9 +36,10 @@ const ModifyModal = ({ car, onClose, onUpdate }) => {
     }
 
 
-    fetch(`https://carhelp-server.vercel.app/bookings/${car._id}`, {
+    fetch(`https://carhelp-server.vercel.app/bookings/${car._id}?email=${user.email}`, {
       method: "PUT",
       headers: {
+        authorization: `Bearer ${user.accessToken}`,
         "content-type": "application/json",
       },
       body: JSON.stringify({
@@ -68,7 +69,6 @@ const ModifyModal = ({ car, onClose, onUpdate }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          console.log(data);
           onUpdate(upDatedData);
         }
       })

@@ -13,12 +13,14 @@ import PrivateRoute from "../Context/PrivateRoute";
 import CarDetails from "../Pages/CarDetails";
 import MyBookings from "../Pages/MyBookings";
 import MyCars from "../Pages/MyCars";
+import ErrorPage from "../Components/ErrorPage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: mainLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/availablecars',
-        loader: () => fetch('https://carhelp-server.vercel.app/cars'),
+        loader: () => fetch('https://carhelp-server.vercel.app/public-cars'),
         Component: AvailableCars
       },
       {
@@ -52,8 +54,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
       },
       {
-        path:"/mycars",
-        loader: () => fetch('https://carhelp-server.vercel.app/cars'),
+        path:'/mycars',
         element: <PrivateRoute><MyCars></MyCars></PrivateRoute>
       }
     ]

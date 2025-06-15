@@ -13,7 +13,11 @@ const MyCars = () => {
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://carhelp-server.vercel.app/cars")
+    fetch(`https://carhelp-server.vercel.app/cars?email=${user.email}`,{
+      headers:{
+        authorization: `Bearer ${user.accessToken}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         // console.log(data, Array.isArray(data));
@@ -27,9 +31,6 @@ const MyCars = () => {
       <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>
     );
   }
-
-  const myAddedCars = cars.filter((car) => car.userEmail === user.email);
-  // console.log(myAddedCars);
 
 
   const handleModifyCar = (car) => {
@@ -55,8 +56,8 @@ const MyCars = () => {
     <div className="my-25 px-4">
       <h1 className="text-6xl font-semibold text-center">Your Added Cars</h1>
 
-      {myAddedCars?.length > 0 ? (
-        <MyCarsTable myCars={myAddedCars} setCars={setCars} onModify = {handleModifyCar}></MyCarsTable>
+      {cars?.length > 0 ? (
+        <MyCarsTable myCars={cars} setCars={setCars} onModify = {handleModifyCar}></MyCarsTable>
       ) : (
         <>
           <div className="flex flex-col items-center">

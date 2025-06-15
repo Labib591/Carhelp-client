@@ -14,12 +14,14 @@ const AddCar = () => {
     const carData = Object.fromEntries(formData.entries());
 
     carData.bookingCount = parseInt(carData.bookingCount, 10);
-    carData.addDate = new Date();
+    carData.price = parseInt(carData.price, 10);
+    // carData.addDate = new Date();
     const features = carData.features.split(",").map((feature) => feature.trim());
 
-    fetch("https://carhelp-server.vercel.app/cars", {
+    fetch(`https://carhelp-server.vercel.app/cars?email=${user.email}`, {
       method: "POST",
       headers: {
+        authorization: `Bearer ${user.accessToken}`,
         "content-type": "application/json",
       },
       body: JSON.stringify({
@@ -34,7 +36,7 @@ const AddCar = () => {
         features: features,
         bookingCount: carData.bookingCount,
         userEmail: user.email,
-        addDate: carData.addDate,
+        // addDate: carData.addDate,
       }),
     })
       .then((res) => res.json())
