@@ -22,10 +22,10 @@ const CarDetails = () => {
         <div className="text-center my-20 text-xl">Loading car details...</div>
       }
     >
-      <div className="max-w-5xl mx-auto my-24 rounded-3xl overflow-hidden shadow-2xl relative font-display">
+      <div className="w-[90%] mx-auto my-24 rounded-3xl overflow-hidden shadow-2xl relative font-display">
         {/* Background Image */}
         <div className="relative h-[800px] w-full">
-          <img src={image} alt={model} className="w-full h-full object-cover" />
+          <img src={image} alt={model} className="w-full h-full object-fill md:object-cover" />
 
           {/* Bottom Details Overlay */}
           <div className="absolute bottom-0 w-full bg-[var(--primary-50)]/50 backdrop-blur-md px-6 py-6 md:py-8 flex flex-col gap-4">

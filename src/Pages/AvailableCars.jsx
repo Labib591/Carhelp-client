@@ -140,19 +140,25 @@ if (loading) {
         </div>
       </div>
 
-      {isGrid ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredCars.map((car) => (
-            <Car key={car._id} car={car}></Car>
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {filteredCars.map((car) => (
-            <Car key={car._id} car={car}></Car>
-          ))}
-        </div>
-      )}
+      {
+        filteredCars.length > 0 ? (
+          isGrid ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredCars.map((car) => (
+                <Car key={car._id} car={car}></Car>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {filteredCars.map((car) => (
+                <Car key={car._id} car={car}></Car>
+              ))}
+            </div>
+          )
+        ) : (
+          <h1 className="text-2xl font-semibold text-center">No Cars Available</h1>
+        )
+      }
     </div>
   );
 };

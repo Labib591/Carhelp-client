@@ -90,6 +90,7 @@ const MyCarsTable = ({ myCars, setCars, onModify }) => {
                 <img
                   src={car.image}
                   alt="Car"
+                  loading="lazy"
                   className="rounded-lg w-24 h-16 object-cover"
                 />
               </td>

@@ -9,6 +9,7 @@ const Hero = () => {
       <img
         src={HeroImage}
         alt="HeroImage"
+        loading="lazy"
         className="w-full h-screen bg-cover"
         style={{ filter: "brightness(50%)" }}
       />

@@ -9,7 +9,7 @@ const Footer = () => {
 
         {/* Logo & Tagline */}
         <div>
-          <img src={Logo} alt="logo" className="w-24"/>
+          <img loading="lazy" src={Logo} alt="logo" className="w-24"/>
           <h2 className="text-2xl font-bold text-[#00BFFF] mb-2">CarHelp</h2>
           <p className="text-[#CCF2FF]">Reliable. Affordable. Fast.</p>
         </div>
