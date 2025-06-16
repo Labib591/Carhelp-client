@@ -3,9 +3,13 @@ import { IoCalendarOutline, IoTrashBin } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import Swal from 'sweetalert2'
 import ModifyModal from "./ModifyModal";
+import { use } from "react";
+import { AuthContext } from "../Context/AuthContext";
 // import { useNavigate } from "react-router-dom";
 
 const MyBookingsTable = ({ myCars, cars, setData, onModifyClicked }) => {
+
+  const {user} = use(AuthContext);
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -38,7 +42,10 @@ const MyBookingsTable = ({ myCars, cars, setData, onModifyClicked }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://carhelp-server.vercel.app/bookings/${id}`, {
+        fetch(`https://carhelp-server.vercel.app/bookings/${id}?email=${user.email}&carId=${carId}`, {
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+          },
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -46,7 +53,7 @@ const MyBookingsTable = ({ myCars, cars, setData, onModifyClicked }) => {
             // console.log(data);
             if (data.deletedCount) {
               setData((prevData) =>
-              prevData.filter((car) => car.carId !== carId)
+              prevData.filter((car) => car._id !== id)
             );
               Swal.fire({
                 title: "Deleted!",
@@ -79,7 +86,7 @@ const MyBookingsTable = ({ myCars, cars, setData, onModifyClicked }) => {
         <tbody>
           {myCars.map((car, index) => (
             <tr
-              key={car.carId}
+              key={car._id}
               className="hover:bg-[var(--primary-50)] transition duration-200"
             >
               <td className="font-semibold">{index + 1}</td>

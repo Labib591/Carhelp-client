@@ -24,7 +24,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('https://carhelp-server.vercel.app/cars'),
         Component: HomePage,
       },
       {

@@ -28,8 +28,8 @@ const ModifyModal = ({ car, onClose, onUpdate }) => {
 
     const upDatedData = {
         ...car,
-        startDate: startDateStr,
-        endDate: endDateStr,
+        startDate: startDate,
+        endDate: endDate,
         totalDays: totalDays,
         totalCost: totalCost,
         bookingDate: bookingDateStr
@@ -46,8 +46,8 @@ const ModifyModal = ({ car, onClose, onUpdate }) => {
         model: car.model,
         image: car.image,
         carId: car._id,
-        startDate: startDateStr,
-        endDate: endDateStr,
+        startDate: startDate,
+        endDate: endDate,
         totalDays: totalDays,
         totalCost: totalCost,
         bookingDate: bookingDateStr,

@@ -57,7 +57,7 @@ const MyBookings = () => {
     return (<div className="my-25 px-4">
         <h1 className="font-display text-6xl font-semibold text-center">My Bookings</h1>
         {
-            data?.length > 0?<MyBookingsTable myCars={data} cars={data} setData={setData} onModifyClicked={handleModify}></MyBookingsTable>:
+            data?.length > 0?<MyBookingsTable key={data._id} myCars={data} cars={data} setData={setData} onModifyClicked={handleModify}></MyBookingsTable>:
             <>
             <div className="flex flex-col items-center">
                 <p className="text-center text-2xl font-semibold text-red-300 mt-20">No Bookings Found</p>
