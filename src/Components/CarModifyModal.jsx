@@ -76,22 +76,14 @@ const handleCarUpdate = (event) => {
 
 
   return (
+    <>
+    <title>Update Car</title>
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 sm:px-6 md:px-8 font-display bg-[#00000040]">
       <div className="w-full max-w-2xl text-[#021100] bg-[var(--primary-50)] rounded-2xl shadow-md p-6 sm:p-8 md:p-10">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center">
           Update Car Details
         </h1>
         <form onSubmit={handleCarUpdate} className="space-y-4">
-            <div>
-            <label className="block font-semibold mb-1">Car Model</label>
-            <input
-              type="text"
-              name="model"
-              defaultValue={car.brand}
-              //   required
-              className="w-full border rounded-xl px-4 py-2 text-sm sm:text-base"
-            />
-          </div>
           <div>
             <label className="block font-semibold mb-1">Car Model</label>
             <input
@@ -197,6 +189,7 @@ const handleCarUpdate = (event) => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

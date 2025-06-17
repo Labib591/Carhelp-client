@@ -54,6 +54,7 @@ const MyCars = () => {
 
   return (
     <div className="my-25 px-4">
+      <title>My Cars</title>
       <h1 className="text-6xl font-semibold text-center">Your Added Cars</h1>
 
       {cars?.length > 0 ? (

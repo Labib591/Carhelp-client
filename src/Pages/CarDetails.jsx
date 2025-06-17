@@ -22,6 +22,7 @@ const CarDetails = () => {
         <div className="text-center my-20 text-xl">Loading car details...</div>
       }
     >
+      <title>{`Carhelp | ${model}`}</title>
       <div className="w-[90%] mx-auto my-24 rounded-3xl overflow-hidden shadow-2xl relative font-display">
         {/* Background Image */}
         <div className="relative h-[800px] w-full">

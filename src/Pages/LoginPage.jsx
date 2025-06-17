@@ -49,6 +49,7 @@ const LoginPage = () => {
 
   return (
     <div>
+      <title>Carhelp | Login</title>
       <div className="hero my-20">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
@@ -78,7 +79,7 @@ const LoginPage = () => {
               </form>
               <p className="mt-4">
                 Don't have an account?
-                <Link to="/register" className="link link-hover text-[var(--primary-400)]">
+                <Link to="/register" className="link link-hover text-[var(--primary-color)] text-lg font-medium ml-1">
                   Register
                 </Link>
               </p>

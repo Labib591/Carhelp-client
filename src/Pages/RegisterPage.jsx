@@ -68,10 +68,11 @@ const RegisterPage = () => {
   }
 
     return (<div>
+      <title>Carhelp | Register</title>
       <div className="hero w-[30rem] mx-auto my-20">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold text-primary">Register now!</h1>
+            <h1 className="text-5xl font-bold text-[var(--primary-color)]">Register now!</h1>
           </div>
           <div className="card bg-base-100 w-96 shrink-0 shadow-2xl">
             <div className="card-body">
@@ -89,11 +90,11 @@ const RegisterPage = () => {
                   name="password"
                   placeholder="Password"
                 />
-                <button type="submit" className="btn bg-primary text-white hover:bg-blue-600 mt-4">Register</button>
+                <button type="submit" className="btn bg-[var(--primary-color)] text-white hover:bg-[var(--primary-600)] mt-4">Register</button>
               </form>
-              <p>Already have an account?<Link to="/login" className="link link-hover text-blue-600">Login</Link></p>
+              <p>Already have an account?<Link to="/login" className="link link-hover text-[var(--primary-color)] text-lg font-medium ml-1">Login</Link></p>
               <div className="divider">OR</div>
-              <button  className="btn bg-primary text-white hover:bg-blue-600"><FaGoogle></FaGoogle>Sign in with Google</button>
+              <button onClick={loginUserWithgoogle}  className="btn bg-[var(--primary-color)] text-white hover:bg-[var(--primary-600)]"><FaGoogle></FaGoogle>Sign in with Google</button>
             </div>
           </div>
         </div>

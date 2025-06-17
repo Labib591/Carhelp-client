@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
-
+import Marquee from "react-fast-marquee";
 const offers = [
   {
     title: "15% Off Weekend Rentals!",
@@ -25,8 +25,8 @@ const SpecialOffers = () => {
         <h2 className="text-6xl font-bold text-[var(--primary-950)] text-center mb-10">
           Special Offers
         </h2>
-        <marquee behavior="scroll" direction="left" duration="20">
-            <div className="grid gap-8 md:grid-cols-2">
+        <Marquee speed={50} pauseOnHover={true}>
+            <div className="flex gap-6">
           {offers.map((offer, index) => (
             <motion.div
               key={index}
@@ -50,7 +50,7 @@ const SpecialOffers = () => {
             </motion.div>
           ))}
         </div>
-        </marquee>
+        </Marquee>
       </div>
     </section>
   );

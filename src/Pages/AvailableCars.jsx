@@ -10,8 +10,8 @@ const AvailableCars = () => {
 
   const [isGrid, setIsGrid] = useState(true);
   const [isList, setIsList] = useState(false);
-  const [sortOption,setSortOption] = useState("");
-  const[loading,setLoading] = useState(false);
+  const [sortOption, setSortOption] = useState("");
+  const [loading, setLoading] = useState(false);
   const [allCars, setAllCars] = useState(data);
   const [filteredCars, setFilteredCars] = useState(data);
 
@@ -19,7 +19,6 @@ const AvailableCars = () => {
     setIsGrid(!isGrid);
     setIsList(!isList);
   };
-
 
   // if(loading){
   //   return <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>;
@@ -31,46 +30,44 @@ const AvailableCars = () => {
 
     let sorted = [...filteredCars];
 
-    switch(option){
+    switch (option) {
       case "date-newest":
-        sorted.sort((a,b) => new Date(b.addDate) - new Date(a.addDate));
+        sorted.sort((a, b) => new Date(b.addDate) - new Date(a.addDate));
         break;
-      
+
       case "date-oldest":
-        sorted.sort((a,b) => new Date(a.addDate) - new Date(b.addDate));
+        sorted.sort((a, b) => new Date(a.addDate) - new Date(b.addDate));
         break;
 
       case "price-lowest":
-        sorted.sort((a,b) => a.price - b.price);
+        sorted.sort((a, b) => a.price - b.price);
         break;
 
       case "price-highest":
-        sorted.sort((a,b) => b.price - a.price);
+        sorted.sort((a, b) => b.price - a.price);
         break;
-      
+
       default:
         sorted = [...allCars];
     }
 
     setFilteredCars(sorted);
-
   };
 
-
   const handleSearch = (e) => {
-  e.preventDefault();
-  const query = e.target.search.value.toLowerCase();
-  const results = allCars.filter((car) =>
-    car.model.toLowerCase().includes(query) ||
-    car.brand?.toLowerCase().includes(query) ||
-    car.location?.toLowerCase().includes(query)
-  );
-  setFilteredCars(results);
-  e.target.reset();
-};
+    e.preventDefault();
+    const query = e.target.search.value.toLowerCase();
+    const results = allCars.filter(
+      (car) =>
+        car.model.toLowerCase().includes(query) ||
+        car.brand?.toLowerCase().includes(query) ||
+        car.location?.toLowerCase().includes(query)
+    );
+    setFilteredCars(results);
+    e.target.reset();
+  };
 
-
-if (loading) {
+  if (loading) {
     return (
       <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>
     );
@@ -78,6 +75,7 @@ if (loading) {
 
   return (
     <div className="my-25 w-[90%] mx-auto font-display">
+      <title>Available Cars</title>
       <h1 className="text-6xl font-semibold text-center">Available Cars</h1>
       <p className="text-center my-2 text-gray-500 ">
         All the available cars are listed below. You can book a car by clicking
@@ -100,22 +98,21 @@ if (loading) {
           </button>
         </form>
 
-        {/* Filter Buttons */} 
+        {/* Filter Buttons */}
 
         <div className="mt-4 md:mt-0">
-  <select
-    onChange={handleSorting}
-    value={sortOption}
-    className="px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-  >
-    <option value="">Sort By</option>
-    <option value="date-newest">Date Added: Newest First</option>
-    <option value="date-oldest">Date Added: Oldest First</option>
-    <option value="price-lowest">Price: Lowest First</option>
-    <option value="price-highest">Price: Highest First</option>
-  </select>
-</div>
-
+          <select
+            onChange={handleSorting}
+            value={sortOption}
+            className="px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+          >
+            <option value="">Sort By</option>
+            <option value="date-newest">Date Added: Newest First</option>
+            <option value="date-oldest">Date Added: Oldest First</option>
+            <option value="price-lowest">Price: Lowest First</option>
+            <option value="price-highest">Price: Highest First</option>
+          </select>
+        </div>
 
         {/* Toggle Buttons */}
         <div className="flex gap-3 mt-4 md:mt-0">
@@ -140,25 +137,25 @@ if (loading) {
         </div>
       </div>
 
-      {
-        filteredCars.length > 0 ? (
-          isGrid ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredCars.map((car) => (
-                <Car key={car._id} car={car}></Car>
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4">
-              {filteredCars.map((car) => (
-                <Car key={car._id} car={car}></Car>
-              ))}
-            </div>
-          )
+      {filteredCars.length > 0 ? (
+        isGrid ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredCars.map((car) => (
+              <Car key={car._id} car={car}></Car>
+            ))}
+          </div>
         ) : (
-          <h1 className="text-2xl font-semibold text-center">No Cars Available</h1>
+          <div className="flex flex-col gap-4">
+            {filteredCars.map((car) => (
+              <Car key={car._id} car={car}></Car>
+            ))}
+          </div>
         )
-      }
+      ) : (
+        <h1 className="text-2xl font-semibold text-center">
+          No Cars Available
+        </h1>
+      )}
     </div>
   );
 };
