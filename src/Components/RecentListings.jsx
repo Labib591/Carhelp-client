@@ -9,6 +9,9 @@ const RecentListings = () => {
     const[data,setData] = useState([]);
     const[loading,setLoading] = useState(true);
 
+    const availableCars = data.filter(car => car.availability === true);
+    console.log(availableCars);
+
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -33,7 +36,7 @@ const RecentListings = () => {
         Recent Listings
       </h1>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 w-[90%] mx-auto my-10">
-        {data.map((car) => (
+        {availableCars.map((car) => (
           <Car car={car} key={car._id}></Car>
         ))}
       </div>

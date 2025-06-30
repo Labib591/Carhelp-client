@@ -23,6 +23,14 @@ const Navbar = () => {
           Available Cars
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className="hover:text-[var(--primary-color)]"
+          to={"/about-us"}
+        >
+          About US
+        </NavLink>
+      </li>
     </>
   );
 
@@ -39,6 +47,14 @@ const Navbar = () => {
           to={"/availablecars"}
         >
           Available Cars
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="hover:text-[var(--primary-color)]"
+          to={"/about-us"}
+        >
+          About US
         </NavLink>
       </li>
       <li>

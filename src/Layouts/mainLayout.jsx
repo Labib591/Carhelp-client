@@ -5,6 +5,8 @@ import Navbar from "../Components/Navbar";
 
 const mainLayout = () => {
 
+    //  const isLoading = navigation.state === "loading";
+
     const navigation = useNavigation();
     if(navigation.state === 'loading'){
         return <span className="loading loading-spinner loading-xl mx-auto flex items-center justify-center"></span>;
@@ -13,7 +15,7 @@ const mainLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <Outlet className="min-h-viewport"></Outlet>
             <Footer></Footer>
         </div>
     );

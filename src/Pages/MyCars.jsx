@@ -13,10 +13,10 @@ const MyCars = () => {
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`https://carhelp-server.vercel.app/cars?email=${user.email}`,{
-      headers:{
-        authorization: `Bearer ${user.accessToken}`
-      }
+    fetch(`https://carhelp-server.vercel.app/cars?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -28,20 +28,21 @@ const MyCars = () => {
 
   if (loading) {
     return (
-      <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
     );
   }
-
 
   const handleModifyCar = (car) => {
     setSelectedCar(car);
     setIsModal(true);
-  }
+  };
 
   const handleModalOff = () => {
     setIsModal(false);
     setSelectedCar(null);
-  }
+  };
 
   const handleUpdateCar = (updtaedCar) => {
     setCars((prevData) =>
@@ -50,15 +51,19 @@ const MyCars = () => {
       )
     );
     handleModalOff();
-  }
+  };
 
   return (
     <div className="my-25 px-4">
-      <title>My Cars</title>
+      <title>Carhelp | My Cars</title>
       <h1 className="text-6xl font-semibold text-center">Your Added Cars</h1>
 
       {cars?.length > 0 ? (
-        <MyCarsTable myCars={cars} setCars={setCars} onModify = {handleModifyCar}></MyCarsTable>
+        <MyCarsTable
+          myCars={cars}
+          setCars={setCars}
+          onModify={handleModifyCar}
+        ></MyCarsTable>
       ) : (
         <>
           <div className="flex flex-col items-center">
@@ -75,9 +80,13 @@ const MyCars = () => {
         </>
       )}
 
-      {
-        isModal && selectedCar && <CarModifyModal car={selectedCar} onModalOff={handleModalOff} onUpdateCar={handleUpdateCar}></CarModifyModal>
-      }
+      {isModal && selectedCar && (
+        <CarModifyModal
+          car={selectedCar}
+          onModalOff={handleModalOff}
+          onUpdateCar={handleUpdateCar}
+        ></CarModifyModal>
+      )}
     </div>
   );
 };

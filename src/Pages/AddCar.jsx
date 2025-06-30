@@ -56,7 +56,7 @@ const AddCar = () => {
 
   return (
     <div className="min-h-screen mt-30 mb-10 flex items-center justify-center px-4 sm:px-6 md:px-8 font-display">
-      <title>Add New Car</title>
+      <title>Carhelp | Add New Car</title>
       <div className="w-full max-w-2xl text-[#021100] bg-[var(--primary-50)] rounded-2xl shadow-md p-6 sm:p-8 md:p-10">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-center">
           Add New Car

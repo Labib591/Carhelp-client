@@ -75,7 +75,7 @@ const AvailableCars = () => {
 
   return (
     <div className="my-25 w-[90%] mx-auto font-display">
-      <title>Available Cars</title>
+      <title>Carhelp | Available Cars</title>
       <h1 className="text-6xl font-semibold text-center">Available Cars</h1>
       <p className="text-center my-2 text-gray-500 ">
         All the available cars are listed below. You can book a car by clicking
@@ -145,7 +145,7 @@ const AvailableCars = () => {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             {filteredCars.map((car) => (
               <Car key={car._id} car={car}></Car>
             ))}

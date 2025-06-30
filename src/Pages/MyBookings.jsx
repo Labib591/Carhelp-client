@@ -30,9 +30,13 @@ const MyBookings = () => {
         })
     },[]);
 
-    if(loading){
-        return <span className="loading loading-spinner loading-xl mx-auto flex justify-center"></span>;
-    }
+    if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
     
 
     const handleModify = (car) => {
@@ -55,7 +59,7 @@ const MyBookings = () => {
   };
 
     return (<div className="my-25 px-4">
-        <title>My Bookings</title>
+        <title>Carhelp | My Bookings</title>
         <h1 className="font-display text-6xl font-semibold text-center">My Bookings</h1>
         {
             data?.length > 0?<MyBookingsTable key={data._id} myCars={data} cars={data} setData={setData} onModifyClicked={handleModify}></MyBookingsTable>:

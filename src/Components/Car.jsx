@@ -19,7 +19,7 @@ const Car = ({ car }) => {
 
   return (
     <Link to={`/cardetails/${_id}`} className="block group">
-      <div className='relative flex flex-col font-display bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500 ease-out'>
+      <div className='relative flex flex-col font-display h-[600px] bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500 ease-out'>
         {/* Image Container with Overlay */}
         <div className="relative overflow-hidden">
           <img 
